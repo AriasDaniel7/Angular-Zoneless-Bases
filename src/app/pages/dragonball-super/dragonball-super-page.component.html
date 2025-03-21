@@ -1,0 +1,17 @@
+<h1>DragonBall Con LocalStorage</h1>
+
+<section class="row">
+  <div class="col-12 col-sm-6">
+    <app-dragonball-character-add
+      [characters]="characters()"
+      (newCharacter)="addCharacter($event)"
+    ></app-dragonball-character-add>
+  </div>
+
+  <div class="col-12 col-sm-6">
+    <app-dragonball-character-list
+      listName="Listado de personajes"
+      [characters]="characters()"
+    ></app-dragonball-character-list>
+  </div>
+</section>
