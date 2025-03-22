@@ -1,0 +1,46 @@
+<h1>DragonBall Sin LocalStorage</h1>
+
+<section class="row">
+  <div class="col-12 col-sm-6">
+    <h3>Agregar:</h3>
+    <input
+      [value]="name()"
+      type="text"
+      class="form-control"
+      placeholder="Nombre:"
+      (input)="name.set(txtName.value)"
+      #txtName
+    />
+    <h3>Poder: {{ power() }}</h3>
+    <input
+      #txtPower
+      (input)="power.set(+txtPower.value)"
+      type="number"
+      class="form-control mt-2"
+      placeholder="Poder:"
+      [value]="power()"
+    />
+    <button (click)="addCharacter()" class="mt-2 btn btn-primary">
+      Agregar
+    </button>
+  </div>
+
+  <div class="col-12 col-sm-6">
+    <h3>Listado fuertes</h3>
+    <ul>
+      @for (character of characters(); track character.id; let idx = $index ) {
+      @if (character.power >= 500) {
+      <li>
+        <span>{{ idx + 1 }} - {{ character.name }} </span>
+        <strong
+          [ngClass]="{
+            'text-danger': character.power >= 9000,
+            'text-primary': character.power < 9000
+          }"
+          >({{ character.power }})</strong
+        >
+      </li>
+      } }
+    </ul>
+  </div>
+</section>
